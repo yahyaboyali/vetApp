@@ -41,7 +41,7 @@ public class Person {
     @Column(name = "person_name")
     private String personName;
 
-    @Column(name = "person_lastName")
+    @Column(name = "person_lastname")
     private String personLastName;
 
     @Column(name = "phone_number")
