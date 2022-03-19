@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import softwareforAnimal.vet.bussiness.abstracts.AnimalService;
 import softwareforAnimal.vet.core.utilities.results.DataResult;
@@ -33,5 +34,10 @@ public class AnimalController {
     @GetMapping("/getAll")
     public DataResult<List<Animal>> getAll(){
         return this.animalService.getAll();
+    }
+    
+    @GetMapping("/getByAnimalId")
+    public DataResult<Animal> getByAnimalId(@RequestParam int animalId){
+        return this.animalService.getByAnimalId(animalId);
     }
 }

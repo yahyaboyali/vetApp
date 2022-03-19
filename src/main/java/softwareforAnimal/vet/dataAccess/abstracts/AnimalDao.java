@@ -5,6 +5,7 @@
  */
 package softwareforAnimal.vet.dataAccess.abstracts;
 
+import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import softwareforAnimal.vet.entities.concretes.Animal;
 
@@ -13,5 +14,6 @@ import softwareforAnimal.vet.entities.concretes.Animal;
  * @author yahya
  */
 public interface AnimalDao extends JpaRepository<Animal, Integer>{
+    Animal getByAnimalId(int animalId);
     
 }

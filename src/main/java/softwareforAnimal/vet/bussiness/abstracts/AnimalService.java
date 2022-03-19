@@ -16,4 +16,6 @@ import softwareforAnimal.vet.entities.concretes.Animal;
 public interface AnimalService {
 
     DataResult<List<Animal>> getAll();
+    
+    DataResult<Animal> getByAnimalId(int animalId);
 }

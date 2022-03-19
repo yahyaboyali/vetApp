@@ -32,5 +32,11 @@ public class AnimalManager implements AnimalService{
     public DataResult<List<Animal>> getAll() {
         return new SuccessDataResult<List<Animal>> (this.animalDao.findAll(),"data listed");
     }
+
+
+    @Override
+    public DataResult<Animal> getByAnimalId(int animalId) {
+        return new SuccessDataResult<Animal> (this.animalDao.getByAnimalId(animalId),"listed by animal id");
+    }
     
 }

@@ -35,6 +35,9 @@ public class Animal {
     @Column(name = "animal_id")
     private int animalId;
     
+    @Column(name="animal_name")
+    private String animalName;
+    
     @Column(name = "species")
     private String species;
     
