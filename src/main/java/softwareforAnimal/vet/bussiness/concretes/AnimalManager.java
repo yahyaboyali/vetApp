@@ -42,9 +42,9 @@ public class AnimalManager implements AnimalService{
     }
 
     @Override
-    public Result deleteByAnimalId(int animalId) {
+    public String deleteByAnimalId(int animalId) {
         this.animalDao.deleteById(animalId);
-        return new SuccessResult("deleted");
+        return "deleted";
     }
     
 }
