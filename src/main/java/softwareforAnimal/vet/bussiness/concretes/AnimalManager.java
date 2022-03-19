@@ -10,7 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import softwareforAnimal.vet.bussiness.abstracts.AnimalService;
 import softwareforAnimal.vet.core.utilities.results.DataResult;
+import softwareforAnimal.vet.core.utilities.results.Result;
 import softwareforAnimal.vet.core.utilities.results.SuccessDataResult;
+import softwareforAnimal.vet.core.utilities.results.SuccessResult;
 import softwareforAnimal.vet.dataAccess.abstracts.AnimalDao;
 import softwareforAnimal.vet.entities.concretes.Animal;
 
@@ -37,6 +39,12 @@ public class AnimalManager implements AnimalService{
     @Override
     public DataResult<Animal> getByAnimalId(int animalId) {
         return new SuccessDataResult<Animal> (this.animalDao.getByAnimalId(animalId),"listed by animal id");
+    }
+
+    @Override
+    public Result deleteByAnimalId(int animalId) {
+        this.animalDao.deleteById(animalId);
+        return new SuccessResult("deleted");
     }
     
 }

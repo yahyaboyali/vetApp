@@ -12,8 +12,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.View;
+import org.springframework.web.servlet.view.RedirectView;
 import softwareforAnimal.vet.bussiness.abstracts.AnimalService;
 import softwareforAnimal.vet.core.utilities.results.DataResult;
+import softwareforAnimal.vet.dataAccess.abstracts.AnimalDao;
 import softwareforAnimal.vet.entities.concretes.Animal;
 
 /**
@@ -21,23 +25,55 @@ import softwareforAnimal.vet.entities.concretes.Animal;
  * @author yahya
  */
 @RestController
-@RequestMapping("api/animals")
+@RequestMapping("/")
 @CrossOrigin
 public class AnimalController {
-    
+
     private AnimalService animalService;
+
+    @Autowired
+    private AnimalDao animalDao;
 
     @Autowired
     public AnimalController(AnimalService animalService) {
         this.animalService = animalService;
     }
-    @GetMapping("/getAll")
-    public DataResult<List<Animal>> getAll(){
-        return this.animalService.getAll();
+
+    @GetMapping("/")
+    public ModelAndView Main() {
+        ModelAndView m = new ModelAndView("index");
+        return m;
     }
-    
+
+    @GetMapping("AnimalList")
+    public ModelAndView getAll() {
+        ModelAndView m = new ModelAndView("AnimalList");
+        m.addObject("animals", this.animalService.getAll().getData());
+        return m;
+    }
+
+    @GetMapping("/getAllanimals")
+    public ModelAndView getAllDeneme() {
+        ModelAndView m = new ModelAndView("index");
+
+        m.addObject("animals", this.animalService.getAll().getData());
+        return m;
+    }
+
     @GetMapping("/getByAnimalId")
-    public DataResult<Animal> getByAnimalId(@RequestParam int animalId){
-        return this.animalService.getByAnimalId(animalId);
+    public ModelAndView getByAnimalId(@RequestParam int animalId) {
+        ModelAndView m = new ModelAndView("index");
+
+        m.addObject("animals", this.animalService.getByAnimalId(animalId).getData());
+        return m;
     }
+
+    @GetMapping("/deleteAnimal")
+    public ModelAndView deleteAnimal(@RequestParam int animalId) {
+        this.animalService.deleteByAnimalId(animalId);
+        ModelAndView m = new ModelAndView("AnimalList");
+        m.addObject("animals", this.animalService.getAll().getData());
+        return m;
+    }
+
 }
