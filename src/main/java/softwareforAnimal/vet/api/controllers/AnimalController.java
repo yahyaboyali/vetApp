@@ -75,5 +75,10 @@ public class AnimalController {
         m.addObject("animals", this.animalService.getAll().getData());
         return m;
     }
-
+    
+    @GetMapping("/AddAnimal")
+    public ModelAndView showAnimalAddPage(){
+        ModelAndView m = new ModelAndView("AddAnimal");
+        return  m;
+    }
 }
