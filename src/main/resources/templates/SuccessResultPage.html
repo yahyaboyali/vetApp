@@ -13,10 +13,9 @@ and open the template in the editor.
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous"/>
 </head>
 <body>
-<div >
-    <div th:insert="/Navbar :: navbar"></div>  
-    <div th:fragment="animalList" class="container">
-        <table class="table">
+<div>
+    <div th:insert="/Navbar :: navbar"></div>
+    <table class="table container">
             <thead>
                 <tr>
                     <th scope="col">owner's name</th>
@@ -27,7 +26,7 @@ and open the template in the editor.
                     <th scope="col">explanation</th>
                 </tr>   
             </thead>
-            <tbody th:each="animal : ${animals}">
+            <tbody>
                 <tr>
                     <td th:text="${animal.person.personName}"></td>
                     <td th:text="${animal.animalName}"></td>
@@ -35,14 +34,10 @@ and open the template in the editor.
                     <td th:text="${animal.genus}"></td>
                     <td th:text="${animal.animalAge}"></td>
                     <td th:text="${animal.explanation}"></td>
-                    <td>
-                        <a th:href="@{/deleteAnimal(animalId=${animal.animalId})}" class="btn btn-danger ml-2">Delete</a>
-                    </td>
+
                 </tr>
             </tbody>
         </table>
-    </div>
-
 </div>
 </body>
 </html>

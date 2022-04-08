@@ -9,6 +9,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -42,6 +45,7 @@ public class AnimalController {
     @GetMapping("/")
     public ModelAndView Main() {
         ModelAndView m = new ModelAndView("index");
+        m.addObject("animals",this.animalService.getAll().getData());
         return m;
     }
 
@@ -78,7 +82,16 @@ public class AnimalController {
     
     @GetMapping("/AddAnimal")
     public ModelAndView showAnimalAddPage(){
+        Animal animal = new Animal();
         ModelAndView m = new ModelAndView("AddAnimal");
+        m.addObject("animal",animal);
+        return  m;
+    }
+    
+    @PostMapping("/saveAnimal")
+    public ModelAndView add(@ModelAttribute("animal") Animal animal ){
+         animalService.add(animal);
+         ModelAndView m = new ModelAndView("SuccessResultPage");
         return  m;
     }
 }

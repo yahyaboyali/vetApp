@@ -46,5 +46,11 @@ public class AnimalManager implements AnimalService{
         this.animalDao.deleteById(animalId);
         return "deleted";
     }
+
+    @Override
+    public Result add(Animal animal) {
+        this.animalDao.save(animal);
+        return new SuccessDataResult("added");
+    }
     
 }

@@ -53,6 +53,11 @@ public class Person {
     @Column(name = "email")
     private String email;
     
+    @NotBlank
+    @NotNull
+    @Column(name="person_password")
+    private String password;
+    
     @Column(name = "authority")
     private String authority;
     
