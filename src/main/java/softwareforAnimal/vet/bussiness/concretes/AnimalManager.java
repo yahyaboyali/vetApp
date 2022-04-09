@@ -6,10 +6,12 @@
 package softwareforAnimal.vet.bussiness.concretes;
 
 import java.util.List;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import softwareforAnimal.vet.bussiness.abstracts.AnimalService;
 import softwareforAnimal.vet.core.utilities.results.DataResult;
+import softwareforAnimal.vet.core.utilities.results.ErrorDataResult;
 import softwareforAnimal.vet.core.utilities.results.Result;
 import softwareforAnimal.vet.core.utilities.results.SuccessDataResult;
 import softwareforAnimal.vet.core.utilities.results.SuccessResult;
@@ -38,7 +40,12 @@ public class AnimalManager implements AnimalService{
 
     @Override
     public DataResult<Animal> getByAnimalId(int animalId) {
-        return new SuccessDataResult<Animal> (this.animalDao.getByAnimalId(animalId),"listed by animal id");
+        if(this.animalDao.existsById(animalId)){
+            return new SuccessDataResult<Animal> (this.animalDao.getById(animalId),"listed by animal id");
+        }
+        else{
+            return new ErrorDataResult("data not found");
+        }
     }
 
     @Override

@@ -4,6 +4,9 @@
         "th:text": {},
         "th:insert": {
             "context": "div"
+        },
+        "th:action": {
+            "context": "form"
         }
     }
 }

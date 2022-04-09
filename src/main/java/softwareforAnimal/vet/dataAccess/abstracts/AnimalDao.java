@@ -14,6 +14,6 @@ import softwareforAnimal.vet.entities.concretes.Animal;
  * @author yahya
  */
 public interface AnimalDao extends JpaRepository<Animal, Integer>{
-    Animal getByAnimalId(int animalId);
+    
     
 }
