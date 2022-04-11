@@ -59,5 +59,11 @@ public class AnimalManager implements AnimalService{
         this.animalDao.save(animal);
         return new SuccessDataResult("added");
     }
+
+//    @Override
+//    public Result updateAnimal(int animalId, String animalName, int personId, String explanation, int animalAge, String genus, String species) {
+//        this.animalDao.updateAnimal(animalId, animalName, personId, explanation, animalAge, genus, species);
+//        return new SuccessDataResult("updated");
+//    }
     
 }

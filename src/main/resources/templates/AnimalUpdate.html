@@ -13,6 +13,43 @@ and open the template in the editor.
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous"/>
 </head>
 <body>
-<div>TODO write content</div>
+<div>
+    <div th:insert="/Navbar :: navbar"></div>  
+    <div class="container">
+        <div class="card" style="margin-top: 1rem">
+            <form action="#" th:action="@{/update/{animalId}(animalId=${animal.animalId})}" th:object="${animal}" method="POST">
+                <div class="mb-3">
+                    <label for="animalName" class="form-label">enter name</label>
+                    <input type="text" th:field="*{animalName}" class="form-control"  placeholder="enter name"> 
+                </div>
+                <div class="mb-3">
+                    <label for="species" class="form-label">enter species</label>
+                    <input type="text" th:field="*{species}" class="form-control" placeholder="enter species">
+                </div>
+                <div class="mb-3">
+                    <label for="genus" class="form-label">enter genus</label>
+                    <input type="text" th:field="*{genus}" class="form-control" placeholder="enter genus">
+                </div>
+                <div class="mb-3">
+                    <label for="animalAge" class="form-label">enter animalAge</label>
+                    <input type="text" th:field="*{animalAge}" class="form-control" placeholder="enter animalAge">
+                </div>
+                <div class="mb-3">
+                    <label for="explanation" class="form-label">enter explanation</label>
+                    <input type="text" th:field="*{explanation}" class="form-control" placeholder="enter explanation">
+                </div>
+                <div class="mb-3">
+                    <label for="person.personId" class="form-label">enter personId</label>
+                    <input type="text" th:field="*{person.personId}" class="form-control" placeholder="enter personId">
+                </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+
+    </div>
+
+</div>
+</div>
 </body>
 </html>

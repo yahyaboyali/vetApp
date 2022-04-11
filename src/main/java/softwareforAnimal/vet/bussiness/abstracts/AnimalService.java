@@ -23,4 +23,7 @@ public interface AnimalService {
     String deleteByAnimalId(int animalId);
     
     Result add(Animal animal);
+    
+  //  Result updateAnimal(int animalId,String animalName,int personId,String explanation,int animalAge,String genus,String species);
+    
 }
