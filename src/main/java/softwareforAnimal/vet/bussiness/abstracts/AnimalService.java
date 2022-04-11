@@ -18,12 +18,14 @@ public interface AnimalService {
 
     DataResult<List<Animal>> getAll();
     
+    DataResult<List<Animal>> getAll(int pageNo,int pageSize);
+    
     DataResult<Animal> getByAnimalId(int animalId);
     
     String deleteByAnimalId(int animalId);
     
     Result add(Animal animal);
-    
+       
   //  Result updateAnimal(int animalId,String animalName,int personId,String explanation,int animalAge,String genus,String species);
     
 }

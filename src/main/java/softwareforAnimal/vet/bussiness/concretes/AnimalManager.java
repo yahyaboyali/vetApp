@@ -8,6 +8,8 @@ package softwareforAnimal.vet.bussiness.concretes;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import softwareforAnimal.vet.bussiness.abstracts.AnimalService;
 import softwareforAnimal.vet.core.utilities.results.DataResult;
@@ -65,5 +67,11 @@ public class AnimalManager implements AnimalService{
 //        this.animalDao.updateAnimal(animalId, animalName, personId, explanation, animalAge, genus, species);
 //        return new SuccessDataResult("updated");
 //    }
+
+    @Override
+    public DataResult<List<Animal>> getAll(int pageNo, int pageSize) {
+        Pageable pageable = PageRequest.of(pageNo - 1, pageSize); 
+        return new SuccessDataResult<List<Animal>>(this.animalDao.findAll(pageable).getContent(),"listed by pageable");
+    }
     
 }
